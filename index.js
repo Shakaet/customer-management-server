@@ -123,6 +123,65 @@ async function run() {
       res.send(result)
     })
 
+      app.get("/resolveTicket",async(req,res)=>{
+
+      
+
+      let filter={status:"Resolved"}
+
+      let result=await ticketCollection.find(filter).toArray()
+
+      res.send(result)
+    })
+
+       app.get("/myreview/:email",async(req,res)=>{
+
+      let email=req.params.email
+
+      let filter={email}
+
+      let result=await reviewCollection.find(filter).toArray()
+
+      res.send(result)
+    })
+
+
+     app.get("/myfollowup/:email",async(req,res)=>{
+
+      let myEmail=req.params.email
+
+      let filter={myEmail}
+
+      let result=await followUpCollection.find(filter).toArray()
+
+      res.send(result)
+    })
+
+
+     app.get("/myTask/:email",async(req,res)=>{
+
+      let email=req.params.email
+
+      let filter={email}
+
+      let result=await taskCollection.find(filter).toArray()
+
+      res.send(result)
+    })
+
+
+
+    app.get("/myLead/:email",async(req,res)=>{
+
+      let myEmail=req.params.email
+
+      let filter={myEmail}
+
+      let result=await leadCollection.find(filter).toArray()
+
+      res.send(result)
+    })
+
     app.get("/api/review",async(req,res)=>{
 
      let result=await reviewCollection.find().toArray()
